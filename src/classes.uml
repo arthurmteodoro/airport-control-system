@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="-688.7777777777779" y="-230.72222222222229">Aviao</node>
+    <node x="-552.3333333333337" y="369.33333333333337">Passageiro</node>
+    <node x="-63.52777777777749" y="-307.80555555555577">Voo</node>
+    <node x="566.3333333333337" y="24.833333333332945">CompanhiaAerea</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="Voo" target="CompanhiaAerea">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Aviao" target="Passageiro">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="Voo" target="Aviao">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7999999999999996" x="179.37500000000023" y="73.00000000000011" />
+  <SelectedNodes>
+    <node>Voo</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
