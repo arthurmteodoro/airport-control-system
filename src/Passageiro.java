@@ -1,7 +1,6 @@
-import java.util.Date;
-
 /**
  * Created by arthur on 27/03/17.
+ * Classe que contem dados sobre os passageiros
  */
 public class Passageiro
 {
@@ -9,58 +8,73 @@ public class Passageiro
     private String telefone;
     private String email;
     private String cpf;
-    private java.util.Date nascimento;
+    private String nascimento;
 
     public Passageiro()
     {
+        this.nome = "";
+        this.telefone = "";
+        this.email = "";
+        this.cpf = "";
+        this.nascimento = "";
     }
 
-    public Passageiro(String nome, String telefone, String email, String cpf, Date nascimento)
+    public Passageiro(String nome, String telefone, String email, String cpf, String nascimento)
     {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.cpf = cpf;
+        this.nascimento = nascimento;
     }
 
     public void setNome(String nome)
     {
+        this.nome = nome;
     }
 
     public String getNome()
     {
-        return null;
+        return this.nome;
     }
 
     public void setTelefone(String telefone)
     {
+        this.telefone = telefone;
     }
 
     public String getTelefone()
     {
-        return null;
+        return this.telefone;
     }
 
     public void setEmail(String email)
     {
+        this.email = email;
     }
 
     public String getEmail()
     {
-        return null;
+        return this.email;
     }
 
     public void setCpf(String cpf)
     {
+        this.cpf = cpf;
     }
 
     public String getCpf()
     {
-        return null;
+        return this.cpf;
     }
 
-    public void setNascimento(Date nascimento)
+    public void setNascimento(String nascimento)
     {
+        this.nascimento = nascimento;
     }
 
-    public Date getNascimento()
+    public String getNascimento()
     {
-        return null;
+        return this.nascimento;
     }
 }
