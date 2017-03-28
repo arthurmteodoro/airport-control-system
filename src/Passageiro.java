@@ -6,16 +6,16 @@ public class Passageiro
 {
     private String nome;
     private String telefone;
-    private String email;
-    private String cpf;
+    private Email email;
+    private CPF cpf;
     private String nascimento;
 
     public Passageiro()
     {
         this.nome = "";
         this.telefone = "";
-        this.email = "";
-        this.cpf = "";
+        this.email = new Email();
+        this.cpf = new CPF();
         this.nascimento = "";
     }
 
@@ -23,8 +23,8 @@ public class Passageiro
     {
         this.nome = nome;
         this.telefone = telefone;
-        this.email = email;
-        this.cpf = cpf;
+        this.email = new Email(email);
+        this.cpf = new CPF(cpf);
         this.nascimento = nascimento;
     }
 
@@ -48,22 +48,22 @@ public class Passageiro
         return this.telefone;
     }
 
-    public void setEmail(String email)
+    public void setEmail(Email email)
     {
         this.email = email;
     }
 
-    public String getEmail()
+    public Email getEmail()
     {
         return this.email;
     }
 
-    public void setCpf(String cpf)
+    public void setCpf(CPF cpf)
     {
         this.cpf = cpf;
     }
 
-    public String getCpf()
+    public CPF getCpf()
     {
         return this.cpf;
     }
