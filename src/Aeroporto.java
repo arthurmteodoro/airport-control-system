@@ -1,33 +1,70 @@
-import javax.swing.*;
-
 /**
  * Created by arthur on 28/03/17.
+ * Classe que contem os dados e operações do aeroporto
  */
 public class Aeroporto
 {
-    public static void main(String[] args)
+    private CompanhiaAerea[] companhiasAereas;
+    private int quantidadeCompanhias;
+    private Voo[] voos;
+    private int quantidadeVoos;
+
+    public Aeroporto()
     {
-        Voo[] voos = new Voo[100];
+        this.companhiasAereas = new CompanhiaAerea[100];
+        this.quantidadeCompanhias = 0;
+        this.voos = new Voo[100];
+        this.quantidadeVoos = 0;
+    }
 
-        String nome = JOptionPane.showInputDialog(null, "Digite o nome da companhia");
+    public CompanhiaAerea[] getCompanhiasAereas()
+    {
+        return this.companhiasAereas;
+    }
 
-        CompanhiaAerea companhia = new CompanhiaAerea(nome, 0, 0);
+    public int getQuantidadeCompanhias()
+    {
+        return  this.quantidadeCompanhias;
+    }
 
-        String aviaoNome = JOptionPane.showInputDialog(null, "Digite o prefixo do aviao");
-        String aviaoQuant = JOptionPane.showInputDialog(null, "Digite a quantidade de assentos do aviao");
+    public void setQuantidadeCompanhias(int quantidade)
+    {
+        this.quantidadeVoos = quantidade;
+    }
 
-        Aviao aviao = new Aviao(aviaoNome, 0, 0, 0, 0, 0, Integer.parseInt(aviaoQuant));
+    public int getQuantidadeVoos()
+    {
+        return this.quantidadeVoos;
+    }
 
-        Voo voo = new Voo(1, companhia, aviao, "28/03/2017", "08:57", "formiga", "asd");
+    public void setQuantidadeVoos(int quantidadeVoos)
+    {
+        this.quantidadeVoos = quantidadeVoos;
+    }
 
-        Passageiro passageiro = new Passageiro("asd", "123123", "asd@gmail.com", "123.456.789", "10/10/1999");
-        CPF cpfPassageiro = passageiro.getCpf();
-        if(cpfPassageiro.eValido())
-            System.out.println("eh valido");
-        else
-            System.out.println("nao eh valido");
+    public Voo[] getVoos()
+    {
+        return this.voos;
+    }
 
-        voo.inserePassageiro(passageiro);
+    public String cadastraCompanhia(String nomeCompanhia)
+    {
+        if(this.quantidadeCompanhias >= 100)
+            return "ERRO - Quantidade de Companhias Esgotadas.";
 
+        CompanhiaAerea novaCompanhia = new CompanhiaAerea(nomeCompanhia, 0, 0);
+        this.companhiasAereas[this.quantidadeCompanhias] = novaCompanhia;
+        this.quantidadeCompanhias++;
+        return "Companhia Aerea Criada com Sucesso";
+    }
+
+    public CompanhiaAerea getCompanhia(String nomeCompanhia)
+    {
+        for(int i = 0; i < this.quantidadeCompanhias; i++)
+        {
+            if(this.companhiasAereas[i].getNome().equals(nomeCompanhia))
+                return this.companhiasAereas[i];
+        }
+        return null;
     }
 }

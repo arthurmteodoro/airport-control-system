@@ -104,4 +104,10 @@ public class Aviao
         return this.quantidadeAssentos;
     }
 
+    @Override
+    public String toString()
+    {
+        return this.getPrefixo();
+    }
+
 }

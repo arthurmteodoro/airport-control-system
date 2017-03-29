@@ -7,12 +7,14 @@ public class CompanhiaAerea
     private String nome;
     private int quantidadeVoo;
     private double lucro;
+    private Aviao[] avioes;
 
     public CompanhiaAerea()
     {
         this.nome = "";
         this.quantidadeVoo = 0;
         this.lucro = 0;
+        this.avioes = new Aviao[100];
     }
 
     public CompanhiaAerea(String nome, int quantidadeVoo, double lucro)
@@ -20,6 +22,7 @@ public class CompanhiaAerea
         this.nome = nome;
         this.quantidadeVoo = quantidadeVoo;
         this.lucro = lucro;
+        this.avioes = new Aviao[100];
     }
 
     public void setNome(String nome)
@@ -52,4 +55,36 @@ public class CompanhiaAerea
         return this.lucro;
     }
 
+    public void setAvioes(Aviao[] avioes)
+    {
+        this.avioes = avioes;
+    }
+
+    public Aviao[] getAvioes()
+    {
+        return this.avioes;
+    }
+
+    public Aviao getAviaoPrefixo(String prefixoAviao)
+    {
+        for(int i = 0; this.avioes[i] != null; i++)
+        {
+            if(this.avioes[i].getPrefixo().equals(prefixoAviao))
+                return this.avioes[i];
+        }
+        return null;
+    }
+
+    public void insereAviao(Aviao aviao)
+    {
+        int i;
+        for(i = 0; this.avioes[i] != null; i++);
+        this.avioes[i] = aviao;
+    }
+
+    @Override
+    public String toString()
+    {
+        return this.nome;
+    }
 }

@@ -200,4 +200,10 @@ public class Voo
         this.quantidadePassageiros++;
         return true;
     }
+
+    @Override
+    public String toString()
+    {
+        return String.valueOf(this.numeroVoo);
+    }
 }
