@@ -1,14 +1,18 @@
+import com.google.gson.Gson;
+
 import javax.swing.*;
+import java.io.IOException;
 
 /**
  * Created by arthur on 28/03/17.
+ * Classe principal do sistema
  */
 public class Principal
 {
     public static void main(String[] args)
     {
         Aeroporto aeroporto = new Aeroporto();
-        ModuloCompanhia moduloCompanhia = new ModuloCompanhia(aeroporto.getCompanhiasAereas(), aeroporto.getVoos());
+        ModuloCompanhia moduloCompanhia = new ModuloCompanhia();
 
         int opcao;
         do
@@ -16,6 +20,7 @@ public class Principal
             opcao = Integer.parseInt(JOptionPane.showInputDialog(null, "Menu de opcoes\n" +
                     "1. Cadastrar Companhia Aerea\n" +
                     "2. Entrar no módulo de Companhias Aéreas\n" +
+                    "3. Importação do arquivo Json\n" +
                     "7. Sair", "Menu de Opcoes - Geral", JOptionPane.PLAIN_MESSAGE));
 
             switch(opcao)
@@ -41,6 +46,7 @@ public class Principal
                                 "1. Cadastrar Aviao\n" +
                                 "2. Cadastrar Voo\n" +
                                 "3. Cadastrar Passageiro\n" +
+                                "4. Gera Json\n" +
                                 "7. Sair", "Menu de Opcoes - Companhia "+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE));
 
                         switch(opcaoModuloCompanhia)
@@ -63,7 +69,7 @@ public class Principal
                                         "Cadastro de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE));
 
                                 //criacao do aviao
-                                if(moduloCompanhia.cadastraAviao(companhiaEscolhida.getNome(), prefixo, autonomia, altura,
+                                if(moduloCompanhia.cadastraAviao(companhiaEscolhida, prefixo, autonomia, altura,
                                         envergadura, comprimento, capacidade, quantAssentos))
                                     JOptionPane.showConfirmDialog(null, "Aviao Cadastrado com Sucesso",
                                             "Cadastro de avioes - Companhia"+companhiaEscolhida, JOptionPane.OK_CANCEL_OPTION);
@@ -92,7 +98,6 @@ public class Principal
                                 {
                                     JOptionPane.showConfirmDialog(null, "Voo Cadastrado com Sucesso",
                                             "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.OK_CANCEL_OPTION);
-                                    aeroporto.setQuantidadeVoos(aeroporto.getQuantidadeVoos()+1);
                                 }
                                 else
                                     JOptionPane.showConfirmDialog(null, "ERRO - Voo Nao Cadastrado",
@@ -123,9 +128,31 @@ public class Principal
                                             "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.OK_CANCEL_OPTION);
                                 break;
 
+                            case 4://gera o json
+                                try
+                                {
+                                    moduloCompanhia.geraJson();
+                                    JOptionPane.showConfirmDialog(null, "Json gerado");
+                                } catch(IOException e)
+                                {
+                                    e.printStackTrace();
+                                    JOptionPane.showConfirmDialog(null, "Falha na criacao do Json");
+                                }
                         }
                     }while(opcaoModuloCompanhia != 7);
                     break;//break do case 2 - menu geral.
+
+                case 3://importacao do arquivo json
+                    int opcaoImportacao = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja importar ps dados",
+                            "Importacao do Json", JOptionPane.YES_NO_CANCEL_OPTION);
+                    if(opcaoImportacao == JOptionPane.YES_OPTION)
+                    {
+                        if(aeroporto.leVoosJson("voo.json"))
+                            JOptionPane.showConfirmDialog(null, "Json Lido com Sucesso", "Leitura do Json", JOptionPane.OK_CANCEL_OPTION);
+                        else
+                            JOptionPane.showConfirmDialog(null, "Erro na Leitura do Json", "Leitura do Json", JOptionPane.OK_CANCEL_OPTION);
+
+                    }
 
             }
 

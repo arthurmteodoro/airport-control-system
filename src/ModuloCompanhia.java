@@ -1,27 +1,25 @@
+import com.google.gson.Gson;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * Created by arthur on 28/03/17.
  * Esta classe e a responsavel pelas operacoes que o modulo companhia implementa
  */
 public class ModuloCompanhia
 {
-    private CompanhiaAerea[] companhiasAereas;
     private Voo[] voos;
 
-    public ModuloCompanhia(CompanhiaAerea[] companhiasAereas, Voo[] voos)
+    public ModuloCompanhia()
     {
-        this.companhiasAereas = companhiasAereas;
-        this.voos = voos;
+        this.voos = new Voo[100];
     }
 
-    public boolean cadastraAviao(String nomeCompanhia, String prefixo, double autonomia, double altura,
+    public boolean cadastraAviao(CompanhiaAerea companhia, String prefixo, double autonomia, double altura,
                                  double envergadura, double comprimento, double capacidade, int quantidadeAssentos)
     {
-        CompanhiaAerea companhia = null;
-        for(int i = 0; this.companhiasAereas[i] != null; i++)
-        {
-            if(this.companhiasAereas[i].getNome().equals(nomeCompanhia))
-                companhia = this.companhiasAereas[i];
-        }
         if(companhia == null)
             return false;
 
@@ -72,5 +70,15 @@ public class ModuloCompanhia
             }
         }
         return voos;
+    }
+
+    public String geraJson() throws IOException
+    {
+        Gson gson = new Gson();
+        String json = gson.toJson(this.voos);
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("voo.json"));
+        bufferedWriter.append(json);
+        bufferedWriter.close();
+        return "voo.json";
     }
 }

@@ -1,3 +1,7 @@
+import com.google.gson.Gson;
+
+import java.io.*;
+
 /**
  * Created by arthur on 28/03/17.
  * Classe que contem os dados e operações do aeroporto
@@ -20,6 +24,18 @@ public class Aeroporto
     public CompanhiaAerea[] getCompanhiasAereas()
     {
         return this.companhiasAereas;
+    }
+
+    public void setVoos(Voo[] voos)
+    {
+        this.voos = voos;
+    }
+
+    public int contaVoos()
+    {
+        int i;
+        for(i = 0; this.voos[i] != null; i++);
+        return i;
     }
 
     public int getQuantidadeCompanhias()
@@ -66,5 +82,33 @@ public class Aeroporto
                 return this.companhiasAereas[i];
         }
         return null;
+    }
+
+    public boolean leVoosJson(String arquivo)
+    {
+        try
+        {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(arquivo));
+            String json = "";
+            String linha = bufferedReader.readLine();
+            while(linha != null)
+            {
+                json = json + linha;
+                linha = bufferedReader.readLine();
+            }
+            Gson gson = new Gson();
+            this.voos = gson.fromJson(json, Voo[].class);
+            bufferedReader.close();
+            return true;
+
+        } catch(FileNotFoundException e)
+        {
+            e.printStackTrace();
+            return false;
+        } catch(IOException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

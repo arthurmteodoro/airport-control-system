@@ -1,3 +1,5 @@
 *.pdf
 .idea/
 *.iml
+out/
+*.json
