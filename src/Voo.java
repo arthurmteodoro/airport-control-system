@@ -14,6 +14,7 @@ public class Voo
     private Date data;
     private String destino;
     private String origem;
+    private String status;
     private int quantidadePassageiros;
     private Passageiro[] passageiros;
 
@@ -25,6 +26,7 @@ public class Voo
         this.data = new Date();
         this.destino = "";
         this.origem = "";
+        this.status = "";
         this.quantidadePassageiros = 0;
         this.passageiros = null;
     }
@@ -57,6 +59,7 @@ public class Voo
         this.origem = origem;
 
         this.quantidadePassageiros = 0;
+        this.status = "Confirmado";
 
         //como ja possui o numero de assento o aviao possui e possivel
         //determinar quantos passageiros o voo pode ter
@@ -148,7 +151,8 @@ public class Voo
 
     public String getHora()
     {
-        return null;
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        return sdf.format(this.data);
     }
 
     public void setDestino(String destino)
@@ -169,6 +173,16 @@ public class Voo
     public String getOrigem()
     {
         return this.origem;
+    }
+
+    public void setStatus(String status)
+    {
+        this.status = status;
+    }
+
+    public String getStatus()
+    {
+        return this.status;
     }
 
     public void setQuantidadePassageiros(int quantidadePassageiros)

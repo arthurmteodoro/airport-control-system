@@ -13,6 +13,7 @@ public class Principal
     {
         Aeroporto aeroporto = new Aeroporto();
         ModuloCompanhia moduloCompanhia = new ModuloCompanhia();
+        ModuloPainel moduloPainel = new ModuloPainel(aeroporto.getVoos());
 
         int opcao;
         do
@@ -21,6 +22,7 @@ public class Principal
                     "1. Cadastrar Companhia Aerea\n" +
                     "2. Entrar no módulo de Companhias Aéreas\n" +
                     "3. Importação do arquivo Json\n" +
+                    "4. Painel de Voos\n" +
                     "7. Sair", "Menu de Opcoes - Geral", JOptionPane.PLAIN_MESSAGE));
 
             switch(opcao)
@@ -148,12 +150,21 @@ public class Principal
                     if(opcaoImportacao == JOptionPane.YES_OPTION)
                     {
                         if(aeroporto.leVoosJson("voo.json"))
+                        {
+                            moduloPainel.setVoos(aeroporto.getVoos());
                             JOptionPane.showConfirmDialog(null, "Json Lido com Sucesso", "Leitura do Json", JOptionPane.OK_CANCEL_OPTION);
+                        }
                         else
                             JOptionPane.showConfirmDialog(null, "Erro na Leitura do Json", "Leitura do Json", JOptionPane.OK_CANCEL_OPTION);
 
                     }
+                    break;
 
+                case 4://painel de voo
+                    String dia = JOptionPane.showInputDialog(null, "Digite o dia: ");
+                    String dadosPainel = moduloPainel.mostraVoos(dia);
+                    JOptionPane.showMessageDialog(null, dadosPainel);
+                    break;
             }
 
         }while(opcao != 7);
