@@ -14,6 +14,7 @@ public class Principal
         Aeroporto aeroporto = new Aeroporto();
         ModuloCompanhia moduloCompanhia = new ModuloCompanhia();
         ModuloPainel moduloPainel = new ModuloPainel(aeroporto.getVoos());
+        ModuloCelular moduloCelular = new ModuloCelular(aeroporto.getVoos());
 
         int opcao;
         do
@@ -23,6 +24,7 @@ public class Principal
                     "2. Entrar no módulo de Companhias Aéreas\n" +
                     "3. Importação do arquivo Json\n" +
                     "4. Painel de Voos\n" +
+                    "5. Consulta do Passageiro\n" +
                     "7. Sair", "Menu de Opcoes - Geral", JOptionPane.PLAIN_MESSAGE));
 
             switch(opcao)
@@ -152,6 +154,7 @@ public class Principal
                         if(aeroporto.leVoosJson("voo.json"))
                         {
                             moduloPainel.setVoos(aeroporto.getVoos());
+                            moduloCelular.setVoos(aeroporto.getVoos());
                             JOptionPane.showConfirmDialog(null, "Json Lido com Sucesso", "Leitura do Json", JOptionPane.OK_CANCEL_OPTION);
                         }
                         else
@@ -165,6 +168,19 @@ public class Principal
                     String dadosPainel = moduloPainel.mostraVoos(dia);
                     JOptionPane.showMessageDialog(null, dadosPainel);
                     break;
+
+                case 5://modulo do passageiro
+                    String cpf = JOptionPane.showInputDialog(null, "Digite o seu CPF:", "Consulta do Passageiro", JOptionPane.PLAIN_MESSAGE);
+                    Voo[] voosDoPasageiro = moduloCelular.getVoosPassageiro(cpf);
+                    if(voosDoPasageiro != null)
+                    {
+                        String mensagem = moduloCelular.getStringVoos(voosDoPasageiro, cpf);
+                        JOptionPane.showConfirmDialog(null, mensagem, "Busca de Voos", JOptionPane.DEFAULT_OPTION);
+                    }
+                    else
+                        JOptionPane.showConfirmDialog(null, "Passageiro Nao Cadastado", "Busca de Voos",JOptionPane.DEFAULT_OPTION);
+                    break;
+
             }
 
         }while(opcao != 7);
