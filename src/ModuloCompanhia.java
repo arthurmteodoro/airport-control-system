@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Created by arthur on 28/03/17.
+ * Created by arthur and saulo on 28/03/17.
  * Esta classe e a responsavel pelas operacoes que o modulo companhia implementa
  */
 public class ModuloCompanhia

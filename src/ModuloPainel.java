@@ -2,7 +2,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by arthur on 31/03/17.
+ * Created by arthur and saulo on 31/03/17.
  * Modulo que controla o painel do aeroporto
  */
 public class ModuloPainel

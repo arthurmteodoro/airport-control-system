@@ -2,7 +2,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by arthur on 28/03/17.
+ * Created by arthur and saulo on 28/03/17.
  * Classe para o controle e validacao do CPF
  */
 public class CPF

@@ -3,7 +3,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * Created by arthur on 27/03/17.
+ * Created by arthur and saulo on 27/03/17.
  * Classe do voo
  */
 public class Voo

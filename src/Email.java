@@ -2,7 +2,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by arthur on 27/03/17.
+ * Created by arthur and saulo on 27/03/17.
  * Classe que controla o email e sua devida validacao
  */
 public class Email

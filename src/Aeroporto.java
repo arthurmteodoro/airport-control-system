@@ -3,7 +3,7 @@ import com.google.gson.Gson;
 import java.io.*;
 
 /**
- * Created by arthur on 28/03/17.
+ * Created by arthur and saulo on 28/03/17.
  * Classe que contem os dados e operações do aeroporto
  */
 public class Aeroporto

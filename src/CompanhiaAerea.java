@@ -1,5 +1,5 @@
 /**
- * Created by arthur on 27/03/17.
+ * Created by arthur and saulo on 27/03/17.
  * Classe responsável pela companhia
  */
 public class CompanhiaAerea

@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.io.IOException;
 
 /**
- * Created by arthur on 28/03/17.
+ * Created by arthur and saulo on 28/03/17.
  * Classe principal do sistema
  */
 public class Principal
