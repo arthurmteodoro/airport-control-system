@@ -92,11 +92,17 @@ public class Voo
         if(aviao.getQuantidadeAssentos() < this.quantidadePassageiros)
             return false;
 
+        Passageiro[] passageirosAntigos = this.passageiros;
+
         this.aviao = aviao;
 
         //como ja possui o numero de assento o aviao possui e possivel
         //determinar quantos passageiros o voo pode ter
         this.passageiros = new Passageiro[this.aviao.getQuantidadeAssentos()];
+        for(int i = 0; i < passageirosAntigos.length && passageirosAntigos[i] != null; i++)
+        {
+            this.passageiros[i] = passageirosAntigos[i];
+        }
         return true;
     }
 

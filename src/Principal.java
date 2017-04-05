@@ -1,5 +1,3 @@
-import com.google.gson.Gson;
-
 import javax.swing.*;
 import java.io.IOException;
 
@@ -51,6 +49,7 @@ public class Principal
                                 "2. Cadastrar Voo\n" +
                                 "3. Cadastrar Passageiro\n" +
                                 "4. Gera Json\n" +
+                                "5. Alterações\n" +
                                 "7. Sair", "Menu de Opcoes - Companhia "+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE));
 
                         switch(opcaoModuloCompanhia)
@@ -142,6 +141,85 @@ public class Principal
                                     e.printStackTrace();
                                     JOptionPane.showConfirmDialog(null, "Falha na criacao do Json");
                                 }
+                                break;
+
+                            case 5://menu de alterações
+                                int opcaoAlteracao;
+                                do
+                                {
+                                    opcaoAlteracao = Integer.parseInt(JOptionPane.showInputDialog(null, "Menu de opcoes\n" +
+                                            "1. Alterar Aviao\n" +
+                                            "2. Alterar Voo\n" +
+                                            "3. Excluir Aviao\n" +
+                                            "4. Excluir Voo\n" +
+                                            "7. Sair", "Menu de Opcoes - Companhia "+companhiaEscolhida+" - Alteração", JOptionPane.PLAIN_MESSAGE));
+
+                                    switch(opcaoAlteracao)
+                                    {
+                                        case 1://alterar o aviao
+                                            String prefixoAlterar = JOptionPane.showInputDialog(null, "Digite o prefixo do aviao",
+                                                    "Alteração de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+                                            double autonomiaAlterar =  Float.parseFloat(JOptionPane.showInputDialog(null, "Digite a autonomia do aviao",
+                                                    "Alteração de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE));
+                                            double alturaAlterar =  Float.parseFloat(JOptionPane.showInputDialog(null, "Digite a altura do aviao",
+                                                    "Alteração de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE));
+                                            double envergaduraAlterar =  Float.parseFloat(JOptionPane.showInputDialog(null, "Digite a envergadura do aviao",
+                                                    "Alteração de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE));
+                                            double comprimentoAlterar =  Float.parseFloat(JOptionPane.showInputDialog(null, "Digite o comprimento do aviao",
+                                                    "Alteração de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE));
+                                            double capacidadeAlterar =  Float.parseFloat(JOptionPane.showInputDialog(null, "Digite a capacidade do aviao",
+                                                    "Alteração de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE));
+                                            int quantAssentosAlterar =  Integer.parseInt(JOptionPane.showInputDialog(null, "Digite a quantidade de assentos do aviao",
+                                                    "Alteração de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE));
+
+                                            if(moduloCompanhia.alteraAviao(companhiaEscolhida, prefixoAlterar, autonomiaAlterar, alturaAlterar,
+                                                    envergaduraAlterar, comprimentoAlterar, capacidadeAlterar, quantAssentosAlterar))
+                                                JOptionPane.showConfirmDialog(null, "Atualização do aviao realizada com sucesso");
+                                            else
+                                                JOptionPane.showConfirmDialog(null, "Falha na atualização de avião");
+                                            break;
+
+                                        case 2://alteracao de voo
+                                            int numeroVooAlteracao = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o numero do voo",
+                                                    "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE));
+                                            Object aviaoObjectVooAlteracao = JOptionPane.showInputDialog(null, "Escolha o aviao",
+                                                    "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE, null, companhiaEscolhida.getAvioes(), null);
+                                            //faz o cast do tipo Object para Aviao
+                                            Aviao aviaoVooAlteracao = ((Aviao) aviaoObjectVooAlteracao);
+                                            String diaVooAlteracao = JOptionPane.showInputDialog(null, "Digite o dia do voo",
+                                                    "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+                                            String horaVooAlteracao = JOptionPane.showInputDialog(null, "Digite a hora do voo",
+                                                    "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+                                            String origemVooAlteracao = JOptionPane.showInputDialog(null, "Digite a origem do voo",
+                                                    "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+                                            String destinoVooAlteracao = JOptionPane.showInputDialog(null, "Digite o destino do voo",
+                                                    "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+                                            if(moduloCompanhia.alterarVoo(numeroVooAlteracao, companhiaEscolhida, aviaoVooAlteracao, diaVooAlteracao,
+                                                    horaVooAlteracao, origemVooAlteracao, destinoVooAlteracao))
+                                                JOptionPane.showConfirmDialog(null, "Atualização do aviao realizada com sucesso");
+                                            else
+                                                JOptionPane.showConfirmDialog(null, "Falha na atualização de avião");
+                                            break;
+
+                                        case 3://excluir o aviao
+                                            String prefixoExcluir = String.valueOf(JOptionPane.showInputDialog(null, "Escolha o aviao",
+                                                    "Exclusao de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE, null, companhiaEscolhida.getAvioes(), null));
+                                            if(moduloCompanhia.excluirAviao(companhiaEscolhida, prefixoExcluir))
+                                                JOptionPane.showConfirmDialog(null, "Exclusão do aviao realizada com sucesso");
+                                            else
+                                                JOptionPane.showConfirmDialog(null, "Exclusão do aviao nao realizada");
+                                            break;
+
+                                        case 4://excluir o voo
+                                            int numeroVooExcluir = Integer.parseInt(String.valueOf(JOptionPane.showInputDialog(null, "Escolha o voo",
+                                                    "Exclusao de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE, null, moduloCompanhia.getVoosCompanhia(companhiaEscolhida), null)));
+                                            if(moduloCompanhia.excluirVoo(numeroVooExcluir))
+                                                JOptionPane.showConfirmDialog(null, "Exclusão do voo realizada com sucesso");
+                                            else
+                                                JOptionPane.showConfirmDialog(null, "Exclusão do voo nao realizada");
+
+                                    }
+                                }while(opcaoAlteracao != 7);
                         }
                     }while(opcaoModuloCompanhia != 7);
                     break;//break do case 2 - menu geral.
