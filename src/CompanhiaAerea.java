@@ -67,7 +67,7 @@ public class CompanhiaAerea
 
     public Aviao getAviaoPrefixo(String prefixoAviao)
     {
-        for(int i = 0; this.avioes[i] != null; i++)
+        for(int i = 0; i < this.avioes.length && this.avioes[i] != null; i++)
         {
             if(this.avioes[i].getPrefixo().equals(prefixoAviao))
                 return this.avioes[i];
@@ -77,6 +77,9 @@ public class CompanhiaAerea
 
     public void insereAviao(Aviao aviao)
     {
+        if(this.avioes[this.avioes.length-1] != null)
+            return;
+
         int i;
         for(i = 0; this.avioes[i] != null; i++);
         this.avioes[i] = aviao;

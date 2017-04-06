@@ -22,10 +22,11 @@ public class ModuloCelular
 
     public int getQuantidadeVoosPassageiro(String cpfPassageiro)
     {
-        //faz a contagem de quantos voos ele esta
+        //faz a contagem de quantos voos o passageiro esta
+
         int quantidadeVoosPassageiro = 0;
 
-        for(int i = 0; this.voos[i] != null; i++)
+        for(int i = 0; i < this.voos.length && this.voos[i] != null; i++)
         {
             Passageiro[] passageirosVoo = this.voos[i].getPassageiros();
             for(int j = 0; j != passageirosVoo.length && passageirosVoo[i] != null; j++)
@@ -46,12 +47,12 @@ public class ModuloCelular
         if(quantidadeVoosPassageiro > 0)
         {
             Voo[] voosPassageiroEsta = new Voo[quantidadeVoosPassageiro];
-            for(int i = 0; this.voos[i] != null; i++)
+            for(int i = 0; i < this.voos.length && this.voos[i] != null; i++)
             {
                 Passageiro[] passageiros = this.voos[i].getPassageiros();
                 for(int j = 0; j != passageiros.length && passageiros[i] != null; j++)
                 {
-                    if(passageiros[j].getCpf().getCpf().equals(cpfPassageiro))
+                    if(passageiros[j].getCpf().equals(cpfPassageiro))
                     {
                         voosPassageiroEsta[indexVetor] = this.voos[i];
                         indexVetor++;

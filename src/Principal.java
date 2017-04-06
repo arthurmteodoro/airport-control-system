@@ -29,14 +29,14 @@ public class Principal
             {
                 case 1:
                     String nomeCompanhia;
-                    nomeCompanhia = JOptionPane.showInputDialog(null, "Digite o nome da companhia");
+                    nomeCompanhia = JOptionPane.showInputDialog(null, "Digite o nome da companhia : ");
                     String resposta = aeroporto.cadastraCompanhia(nomeCompanhia);
                     JOptionPane.showConfirmDialog(null, resposta, "Cadastro de Companhia", JOptionPane.OK_CANCEL_OPTION);
                     break;
 
                 case 2:
                     //Usuario seleciona uma companhia
-                    String companhia = String.valueOf(JOptionPane.showInputDialog(null, "Escolha a companhia",
+                    String companhia = String.valueOf(JOptionPane.showInputDialog(null, "Escolha a companhia : ",
                             "Modulo Companhia", JOptionPane.PLAIN_MESSAGE, null, aeroporto.getCompanhiasAereas(), null));
                     CompanhiaAerea companhiaEscolhida = aeroporto.getCompanhia(companhia);
 
