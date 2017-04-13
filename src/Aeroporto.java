@@ -111,4 +111,34 @@ public class Aeroporto
             return false;
         }
     }
+
+    public int quantidadeVoosCompanhia(CompanhiaAerea companhiaAerea)
+    {
+        int quantidade = 0;
+
+        for(int i = 0; i < this.voos.length && this.voos[i] != null; i++)
+        {
+            if(this.voos[i].getCompanhia().getNome().equals(companhiaAerea.getNome()))
+            {
+                quantidade++;
+            }
+        }
+        return quantidade;
+    }
+
+    public Passageiro[] listaPassageiroVoo(int numeroVoo)
+    {
+        for(Voo voo : this.voos)
+        {
+            if(voo != null)
+            {
+                if(voo.getNumeroVoo() == numeroVoo)
+                {
+                    return voo.getPassageiros();
+                }
+            }
+        }
+        return null;
+    }
+
 }

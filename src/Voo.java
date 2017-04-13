@@ -16,7 +16,9 @@ public class Voo
     private String origem;
     private String status;
     private int quantidadePassageiros;
+    private float pesoTotal;
     private Passageiro[] passageiros;
+    private float pesoAcumulado;
 
     public Voo()
     {
@@ -28,7 +30,9 @@ public class Voo
         this.origem = "";
         this.status = "";
         this.quantidadePassageiros = 0;
+        this.pesoTotal = 0;
         this.passageiros = null;
+        this.pesoAcumulado = -30000;
     }
 
     public Voo(int numeroVoo, CompanhiaAerea companhia, Aviao aviao, String dia, String hora, String destino, String origem)
@@ -59,7 +63,9 @@ public class Voo
         this.origem = origem;
 
         this.quantidadePassageiros = 0;
+        this.pesoTotal = 0;
         this.status = "Confirmado";
+        this.pesoAcumulado = -30000;
 
         //como ja possui o numero de assento o aviao possui e possivel
         //determinar quantos passageiros o voo pode ter
@@ -225,5 +231,25 @@ public class Voo
     public String toString()
     {
         return String.valueOf(this.numeroVoo);
+    }
+
+    public void setPesoTotal(float pesoTotal)
+    {
+        this.pesoTotal = pesoTotal;
+    }
+
+    public float getPesoTotal()
+    {
+        return this.pesoTotal;
+    }
+
+    public void setPesoAcumulado(float pesoAcumulado)
+    {
+        this.pesoAcumulado = pesoAcumulado;
+    }
+
+    public float getPesoAcumulado()
+    {
+        return this.pesoAcumulado;
     }
 }

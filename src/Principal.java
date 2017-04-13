@@ -23,6 +23,7 @@ public class Principal
                     "3. Importação do arquivo Json\n" +
                     "4. Painel de Voos\n" +
                     "5. Consulta do Passageiro\n" +
+                    "6. Módulos Gerenciais\n" +
                     "7. Sair", "Menu de Opcoes - Geral", JOptionPane.PLAIN_MESSAGE));
 
             switch(opcao)
@@ -99,6 +100,7 @@ public class Principal
                                         "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
                                 if(moduloCompanhia.cadastraVoo(numeroVoo, companhiaEscolhida, aviaoVoo, diaVoo, horaVoo, origemVoo, destinoVoo))
                                 {
+                                    companhiaEscolhida.setLucro(companhiaEscolhida.getLucro()+10000);
                                     JOptionPane.showConfirmDialog(null, "Voo Cadastrado com Sucesso",
                                             "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.OK_CANCEL_OPTION);
                                 }
@@ -122,10 +124,33 @@ public class Principal
                                         "Cadastro de Passageiro - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
                                 String nascimentoPassageiro = JOptionPane.showInputDialog(null, "Digite a data de nascimento do Passageiro",
                                         "Cadastro de Passageiro - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+                                float pesoPassageiro = Float.parseFloat(JOptionPane.showInputDialog(null, "Digite o peso da bagagem",
+                                        "Cadastro de Passageiro - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE));
                                 if(moduloCompanhia.cadastraPassageiro(vooPassageiro, nomePassageiro, telefonePassageiro, emailPassageiro,
                                         cpfPassageiro, nascimentoPassageiro))
+                                {
+                                    vooPassageiro.setPesoTotal(pesoPassageiro+vooPassageiro.getPesoTotal());
+                                    if(vooPassageiro.getPesoTotal() > 30000)
+                                    {
+                                        vooPassageiro.setPesoAcumulado(vooPassageiro.getPesoAcumulado()+pesoPassageiro);
+                                        if(vooPassageiro.getPesoAcumulado() >= 1000)
+                                        {
+                                            if(vooPassageiro.getPesoAcumulado() % 1000 != 0)
+                                            {
+                                                int peso = (int)vooPassageiro.getPesoAcumulado()/1000;
+                                                companhiaEscolhida.setLucro(companhiaEscolhida.getLucro()+1000*peso);
+                                                vooPassageiro.setPesoAcumulado(vooPassageiro.getPesoAcumulado()-peso);
+                                            }
+                                            else
+                                            {
+                                                companhiaEscolhida.setLucro(companhiaEscolhida.getLucro()+1000*vooPassageiro.getPesoAcumulado());
+                                                vooPassageiro.setPesoAcumulado(0);
+                                            }
+                                        }
+                                    }
                                     JOptionPane.showConfirmDialog(null, "Passageiro Cadastrado com Sucesso",
-                                            "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.OK_CANCEL_OPTION);
+                                            "Cadastro de Voos - Companhia" + companhiaEscolhida, JOptionPane.OK_CANCEL_OPTION);
+                                }
                                 else
                                     JOptionPane.showConfirmDialog(null, "ERRO - Passageiro Nao Cadastrado",
                                             "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.OK_CANCEL_OPTION);
@@ -257,6 +282,9 @@ public class Principal
                     }
                     else
                         JOptionPane.showConfirmDialog(null, "Passageiro Nao Cadastado", "Busca de Voos",JOptionPane.DEFAULT_OPTION);
+                    break;
+
+                case 6://modulos gerenciais
                     break;
 
             }
