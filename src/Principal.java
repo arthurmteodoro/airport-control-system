@@ -30,7 +30,13 @@ public class Principal
                         "5. Consulta do Passageiro\n" +
                         "6. Módulos Gerenciais\n" +
                         "7. Sair", "Menu de Opcoes - Geral", JOptionPane.PLAIN_MESSAGE);
+
+                if (opcaoStr == null)
+                    break;
             }while(opcaoStr == null || opcaoStr.equals("") || !Verificacoes.somenteNumeroInt(opcaoStr));
+
+            if (opcaoStr == null)
+                break;
             opcao = Integer.parseInt(opcaoStr);
 
             switch(opcao)
@@ -40,7 +46,11 @@ public class Principal
                     do
                     {
                         nomeCompanhia = JOptionPane.showInputDialog(null, "Digite o nome da companhia : ");
+                        if (nomeCompanhia == null)
+                            break;
                     }while(nomeCompanhia == null || nomeCompanhia.equals(""));
+                    if (nomeCompanhia == null)
+                        break;
                     String resposta = aeroporto.cadastraCompanhia(nomeCompanhia);
                     JOptionPane.showConfirmDialog(null, resposta, "Cadastro de Companhia", JOptionPane.OK_CANCEL_OPTION);
                     break;
@@ -52,7 +62,11 @@ public class Principal
                     {
                         companhia = String.valueOf(JOptionPane.showInputDialog(null, "Escolha a companhia : ",
                                 "Modulo Companhia", JOptionPane.PLAIN_MESSAGE, null, aeroporto.getCompanhiasAereas(), null));
+                        if (companhia == "null")
+                            break;
                     }while(companhia == null || companhia.equals("") || companhia.equals("null"));
+                    if (companhia == "null")
+                        break;
                     CompanhiaAerea companhiaEscolhida = aeroporto.getCompanhia(companhia);
 
                     //menu do modulo da companhia
@@ -69,7 +83,14 @@ public class Principal
                                 "4. Gera Json\n" +
                                 "5. Alterações\n" +
                                 "7. Sair", "Menu de Opcoes - Companhia "+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                            if (opcaoModuloCompanhiaStr == null)
+                                break;
                         }while(opcaoModuloCompanhiaStr == null || opcaoModuloCompanhiaStr.equals("") || !Verificacoes.somenteNumeroInt(opcaoModuloCompanhiaStr));
+
+                        if (opcaoModuloCompanhiaStr == null)
+                            break;
+
                         opcaoModuloCompanhia = Integer.parseInt(opcaoModuloCompanhiaStr);
 
                         switch(opcaoModuloCompanhia)
@@ -81,14 +102,26 @@ public class Principal
                                 {
                                     prefixo = JOptionPane.showInputDialog(null, "Digite o prefixo do aviao",
                                             "Cadastro de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                    if (prefixo == null)
+                                        break;
                                 }while(prefixo == null || prefixo.equals(""));
+
+                                if (prefixo == null)
+                                    break;
 
                                 String autonomiaStr;
                                 do
                                 {
                                     autonomiaStr = JOptionPane.showInputDialog(null, "Digite a autonomia do aviao",
                                             "Cadastro de avioes - Companhia" + companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                    if (autonomiaStr == null)
+                                        break;
                                 }while(autonomiaStr == null || autonomiaStr.equals("") || !Verificacoes.somenteNumeroFloat(autonomiaStr));
+
+                                if (autonomiaStr == null)
+                                    break;
                                 double autonomia = Float.parseFloat(autonomiaStr);
 
                                 String alturaStr;
@@ -96,7 +129,13 @@ public class Principal
                                 {
                                     alturaStr =  JOptionPane.showInputDialog(null, "Digite a altura do aviao",
                                             "Cadastro de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                    if (alturaStr == null)
+                                        break;
                                 }while(alturaStr == null || alturaStr.equals("") || !Verificacoes.somenteNumeroFloat(alturaStr));
+
+                                if (alturaStr == null)
+                                    break;
                                 double altura = Float.parseFloat(alturaStr);
 
                                 String envergaduraStr;
@@ -104,7 +143,13 @@ public class Principal
                                 {
                                     envergaduraStr =  JOptionPane.showInputDialog(null, "Digite a envergadura do aviao",
                                             "Cadastro de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                    if (envergaduraStr == null)
+                                        break;
                                 }while(envergaduraStr == null || envergaduraStr.equals("") || !Verificacoes.somenteNumeroFloat(envergaduraStr));
+
+                                if (envergaduraStr == null)
+                                    break;
                                 double envergadura = Float.parseFloat(envergaduraStr);
 
                                 String comprimentoStr;
@@ -112,7 +157,13 @@ public class Principal
                                 {
                                     comprimentoStr = JOptionPane.showInputDialog(null, "Digite o comprimento do aviao",
                                             "Cadastro de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                    if (comprimentoStr == null)
+                                        break;
                                 }while(comprimentoStr == null || comprimentoStr.equals("") || !Verificacoes.somenteNumeroFloat(comprimentoStr));
+
+                                if (comprimentoStr == null)
+                                    break;
                                 double comprimento = Float.parseFloat(comprimentoStr);
 
                                 String capacidadeStr;
@@ -120,7 +171,13 @@ public class Principal
                                 {
                                     capacidadeStr =  JOptionPane.showInputDialog(null, "Digite a capacidade do aviao",
                                             "Cadastro de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                    if (capacidadeStr == null)
+                                        break;
                                 }while(capacidadeStr == null || capacidadeStr.equals("") || !Verificacoes.somenteNumeroFloat(capacidadeStr));
+
+                                if (capacidadeStr == null)
+                                    break;
                                 double capacidade = Float.parseFloat(capacidadeStr);
 
                                 String quantAssentosStr;
@@ -128,7 +185,13 @@ public class Principal
                                 {
                                     quantAssentosStr = JOptionPane.showInputDialog(null, "Digite a quantidade de assentos do aviao",
                                             "Cadastro de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                    if (quantAssentosStr == null)
+                                        break;
                                 }while(quantAssentosStr == null || capacidadeStr.equals("") || !Verificacoes.somenteNumeroInt(quantAssentosStr));
+
+                                if (quantAssentosStr == null)
+                                    break;
                                 int quantAssentos = Integer.parseInt(quantAssentosStr);
 
                                 //criacao do aviao
@@ -148,7 +211,13 @@ public class Principal
                                 {
                                     numeroVooStr = JOptionPane.showInputDialog(null, "Digite o numero do voo",
                                             "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                    if (numeroVooStr == null)
+                                        break;
                                 }while(numeroVooStr == null || numeroVooStr.equals("") || !Verificacoes.somenteNumeroInt(numeroVooStr));
+
+                                if (numeroVooStr == null)
+                                    break;
                                 int numeroVoo = Integer.parseInt(numeroVooStr);
 
                                 Object aviaoObjectVoo;
@@ -156,7 +225,13 @@ public class Principal
                                 {
                                     aviaoObjectVoo = JOptionPane.showInputDialog(null, "Escolha o aviao",
                                             "Cadastro de Voos - Companhia" + companhiaEscolhida, JOptionPane.PLAIN_MESSAGE, null, companhiaEscolhida.getAvioes(), null);
+
+                                    if (aviaoObjectVoo == null)
+                                        break;
                                 }while(aviaoObjectVoo == null);
+
+                                if (aviaoObjectVoo == null)
+                                    break;
                                 //faz o cast do tipo Object para Aviao
                                 Aviao aviaoVoo = ((Aviao) aviaoObjectVoo);
 
@@ -165,28 +240,51 @@ public class Principal
                                 {
                                     diaVoo = JOptionPane.showInputDialog(null, "Digite o dia do voo",
                                             "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                    if (diaVoo == null)
+                                        break;
                                 }while(diaVoo == null || diaVoo.equals("") || !Verificacoes.diaValido(diaVoo));
+
+                                if (diaVoo == null)
+                                    break;
 
                                 String horaVoo;
                                 do
                                 {
                                     horaVoo = JOptionPane.showInputDialog(null, "Digite a hora do voo",
                                             "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                    if (horaVoo == null)
+                                        break;
                                 }while(horaVoo == null || horaVoo.equals("") || !Verificacoes.horaValida(horaVoo));
 
+                                if (horaVoo == null)
+                                    break;
                                 String origemVoo;
                                 do
                                 {
                                     origemVoo = JOptionPane.showInputDialog(null, "Digite a origem do voo",
                                             "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                    if (origemVoo == null)
+                                        break;
                                 }while(origemVoo == null || origemVoo.equals(""));
+
+                                if (origemVoo == null)
+                                    break;
 
                                 String destinoVoo;
                                 do
                                 {
                                     destinoVoo = JOptionPane.showInputDialog(null, "Digite o destino do voo",
                                             "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                    if (destinoVoo == null)
+                                        break;
                                 }while(destinoVoo == null || destinoVoo.equals(""));
+
+                                if (destinoVoo == null)
+                                    break;
 
                                 if(moduloCompanhia.cadastraVoo(numeroVoo, companhiaEscolhida, aviaoVoo, diaVoo, horaVoo, origemVoo, destinoVoo))
                                 {
@@ -206,6 +304,7 @@ public class Principal
                                     vooObjectPassageiro = JOptionPane.showInputDialog(null, "Escolha um voo",
                                         "Cadastro de Passageiro - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE,
                                         null, moduloCompanhia.getVoosCompanhia(companhiaEscolhida), null);
+
                                 }while(vooObjectPassageiro == null);
                                 Voo vooPassageiro = ((Voo) vooObjectPassageiro);
 
@@ -308,7 +407,13 @@ public class Principal
                                                 "3. Excluir Aviao\n" +
                                                 "4. Excluir Voo\n" +
                                                 "7. Sair", "Menu de Opcoes - Companhia "+companhiaEscolhida+" - Alteração", JOptionPane.PLAIN_MESSAGE);
+
+                                        if (opcaoAlteracaoStr == null)
+                                            break;
                                     }while(opcaoAlteracaoStr == null || opcaoAlteracaoStr.equals("") || !Verificacoes.somenteNumeroInt(opcaoAlteracaoStr));
+
+                                    if (opcaoAlteracaoStr == null)
+                                        break;
                                     opcaoAlteracao = Integer.parseInt(opcaoAlteracaoStr);
 
                                     switch(opcaoAlteracao)
@@ -319,14 +424,26 @@ public class Principal
                                             {
                                                 prefixoAlterar = JOptionPane.showInputDialog(null, "Digite o prefixo do aviao",
                                                         "Alteração de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                                if (prefixoAlterar == null)
+                                                    break;
                                             }while(prefixoAlterar == null || prefixoAlterar.equals(""));
+
+                                            if (prefixoAlterar == null)
+                                                break;
 
                                             String autonomiaAlterarStr;
                                             do
                                             {
                                                 autonomiaAlterarStr = JOptionPane.showInputDialog(null, "Digite a autonomia do aviao",
                                                         "Alteração de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                                if (autonomiaAlterarStr == null)
+                                                    break;
                                             }while(autonomiaAlterarStr == null || autonomiaAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(autonomiaAlterarStr));
+
+                                            if (autonomiaAlterarStr == null)
+                                                break;
                                             double autonomiaAlterar = Float.parseFloat(autonomiaAlterarStr);
 
                                             String alturaAlterarStr;
@@ -334,7 +451,13 @@ public class Principal
                                             {
                                                 alturaAlterarStr = JOptionPane.showInputDialog(null, "Digite a altura do aviao",
                                                         "Alteração de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                                if (alturaAlterarStr == null)
+                                                    break;
                                             }while(alturaAlterarStr == null || alturaAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(alturaAlterarStr));
+
+                                            if (alturaAlterarStr == null)
+                                                break;
                                             double alturaAlterar = Float.parseFloat(alturaAlterarStr);
 
                                             String envergaduraAlterarStr;
@@ -342,7 +465,13 @@ public class Principal
                                             {
                                                 envergaduraAlterarStr = JOptionPane.showInputDialog(null, "Digite a envergadura do aviao",
                                                         "Alteração de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                                if (envergaduraAlterarStr == null)
+                                                    break;
                                             }while(envergaduraAlterarStr == null || envergaduraAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(envergaduraAlterarStr));
+
+                                            if (envergaduraAlterarStr == null)
+                                                break;
                                             double envergaduraAlterar = Float.parseFloat(envergaduraAlterarStr);
 
                                             String comprimentoAlterarStr;
@@ -350,7 +479,13 @@ public class Principal
                                             {
                                                 comprimentoAlterarStr = JOptionPane.showInputDialog(null, "Digite o comprimento do aviao",
                                                         "Alteração de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                                if (comprimentoAlterarStr == null)
+                                                    break;
                                             }while(comprimentoAlterarStr == null || comprimentoAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(comprimentoAlterarStr));
+
+                                            if (comprimentoAlterarStr == null)
+                                                break;
                                             double comprimentoAlterar = Float.parseFloat(comprimentoAlterarStr);
 
                                             String capacidadeAlterarStr;
@@ -358,7 +493,13 @@ public class Principal
                                             {
                                                 capacidadeAlterarStr = JOptionPane.showInputDialog(null, "Digite a capacidade do aviao",
                                                         "Alteração de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                                if (capacidadeAlterarStr == null)
+                                                    break;
                                             }while(capacidadeAlterarStr == null || capacidadeAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(capacidadeAlterarStr));
+
+                                            if (capacidadeAlterarStr == null)
+                                                break;
                                             double capacidadeAlterar = Float.parseFloat(capacidadeAlterarStr);
 
                                             String quantAssentosAlterarStr;
@@ -366,7 +507,13 @@ public class Principal
                                             {
                                                 quantAssentosAlterarStr = JOptionPane.showInputDialog(null, "Digite a quantidade de assentos do aviao",
                                                         "Alteração de avioes - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                                if (quantAssentosAlterarStr == null)
+                                                    break;
                                             }while(quantAssentosAlterarStr == null || quantAssentosAlterarStr.equals("") || !Verificacoes.somenteNumeroInt(quantAssentosAlterarStr));
+
+                                            if (quantAssentosAlterarStr == null)
+                                                break;
                                             int quantAssentosAlterar = Integer.parseInt(quantAssentosAlterarStr);
 
                                             if(moduloCompanhia.alteraAviao(companhiaEscolhida, prefixoAlterar, autonomiaAlterar, alturaAlterar,
@@ -382,7 +529,13 @@ public class Principal
                                             {
                                                 numeroVooAlteracaoStr = JOptionPane.showInputDialog(null, "Digite o numero do voo",
                                                         "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                                if (numeroVooAlteracaoStr == null)
+                                                    break;
                                             }while(numeroVooAlteracaoStr == null || numeroVooAlteracaoStr.equals("") || !Verificacoes.somenteNumeroInt(numeroVooAlteracaoStr));
+
+                                            if (numeroVooAlteracaoStr == null)
+                                                break;
                                             int numeroVooAlteracao = Integer.parseInt(numeroVooAlteracaoStr);
 
                                             Object aviaoObjectVooAlteracao;
@@ -390,7 +543,13 @@ public class Principal
                                             {
                                                 aviaoObjectVooAlteracao = JOptionPane.showInputDialog(null, "Escolha o aviao",
                                                         "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE, null, companhiaEscolhida.getAvioes(), null);
+
+                                                if (aviaoObjectVooAlteracao == null)
+                                                    break;
                                             }while(aviaoObjectVooAlteracao == null);
+
+                                            if (aviaoObjectVooAlteracao == null)
+                                                break;
                                             //faz o cast do tipo Object para Aviao
                                             Aviao aviaoVooAlteracao = ((Aviao) aviaoObjectVooAlteracao);
 
@@ -399,28 +558,52 @@ public class Principal
                                             {
                                                 diaVooAlteracao = JOptionPane.showInputDialog(null, "Digite o dia do voo",
                                                         "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                                if (diaVooAlteracao == null)
+                                                    break;
                                             }while(diaVooAlteracao == null || diaVooAlteracao.equals("") || !Verificacoes.diaValido(diaVooAlteracao));
+
+                                            if (diaVooAlteracao == null)
+                                                break;
 
                                             String horaVooAlteracao;
                                             do
                                             {
                                                 horaVooAlteracao = JOptionPane.showInputDialog(null, "Digite a hora do voo",
                                                         "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                                if (horaVooAlteracao == null)
+                                                    break;
                                             }while(horaVooAlteracao == null || horaVooAlteracao.equals("") || !Verificacoes.horaValida(horaVooAlteracao));
+
+                                            if (horaVooAlteracao == null)
+                                                break;
 
                                             String origemVooAlteracao;
                                             do
                                             {
                                                 origemVooAlteracao = JOptionPane.showInputDialog(null, "Digite a origem do voo",
                                                         "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                                if (origemVooAlteracao == null)
+                                                    break;
                                             }while(origemVooAlteracao == null || origemVooAlteracao.equals(""));
+
+                                            if (origemVooAlteracao == null)
+                                                break;
 
                                             String destinoVooAlteracao;
                                             do
                                             {
                                                 destinoVooAlteracao = JOptionPane.showInputDialog(null, "Digite o destino do voo",
                                                         "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+
+                                                if (destinoVooAlteracao == null)
+                                                    break;
                                             }while(destinoVooAlteracao == null || destinoVooAlteracao.equals(""));
+
+                                            if (destinoVooAlteracao == null)
+                                                break;
 
                                             if(moduloCompanhia.alterarVoo(numeroVooAlteracao, companhiaEscolhida, aviaoVooAlteracao, diaVooAlteracao,
                                                     horaVooAlteracao, origemVooAlteracao, destinoVooAlteracao))
@@ -435,7 +618,13 @@ public class Principal
                                             {
                                                 prefixoExcluir = String.valueOf(JOptionPane.showInputDialog(null, "Escolha o aviao",
                                                         "Exclusao de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE, null, companhiaEscolhida.getAvioes(), null));
+
+                                                if (prefixoExcluir == null)
+                                                    break;
                                             }while(prefixoExcluir == null || prefixoExcluir.equals(""));
+
+                                            if (prefixoExcluir == null)
+                                                break;
 
                                             if(moduloCompanhia.excluirAviao(companhiaEscolhida, prefixoExcluir))
                                                 JOptionPane.showConfirmDialog(null, "Exclusão do aviao realizada com sucesso");
@@ -449,7 +638,13 @@ public class Principal
                                             {
                                                 numeroVooExcluirStr = String.valueOf(JOptionPane.showInputDialog(null, "Escolha o voo",
                                                         "Exclusao de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE, null, moduloCompanhia.getVoosCompanhia(companhiaEscolhida), null));
+
+                                                if (numeroVooExcluirStr == null)
+                                                    break;
                                             }while(numeroVooExcluirStr == null || numeroVooExcluirStr.equals(""));
+
+                                            if (numeroVooExcluirStr == null)
+                                                break;
                                             int numeroVooExcluir = Integer.parseInt(numeroVooExcluirStr);
 
                                             if(moduloCompanhia.excluirVoo(numeroVooExcluir))
@@ -485,7 +680,12 @@ public class Principal
                     do
                     {
                         dia = JOptionPane.showInputDialog(null, "Digite o dia: ");
+                        if (dia == null)
+                            break;
                     }while(dia == null || dia.equals("") || !Verificacoes.diaValido(dia));
+
+                    if (dia == null)
+                        break;
 
                     String dadosPainel = moduloPainel.mostraVoos(dia);
                     JOptionPane.showMessageDialog(null, dadosPainel);
@@ -496,7 +696,12 @@ public class Principal
                     do
                     {
                         cpf = JOptionPane.showInputDialog(null, "Digite o seu CPF:", "Consulta do Passageiro", JOptionPane.PLAIN_MESSAGE);
+                        if (cpf == null)
+                            break;
                     }while(cpf == null || cpf.equals("") || !Verificacoes.cpfValido(cpf));
+
+                    if (cpf == null)
+                        break;
 
                     Voo[] voosDoPasageiro = moduloCelular.getVoosPassageiro(cpf);
                     if(voosDoPasageiro != null)
