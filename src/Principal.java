@@ -1,7 +1,9 @@
 import br.ifmg.util.Verificacoes;
+import jdk.nashorn.internal.scripts.JO;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.Arrays;
 
 /**
  * Created by arthur and saulo on 28/03/17.
@@ -33,7 +35,7 @@ public class Principal
 
                 if (opcaoStr == null)
                     break;
-            }while(opcaoStr == null || opcaoStr.equals("") || !Verificacoes.somenteNumeroInt(opcaoStr));
+            }while(opcaoStr.equals("") || !Verificacoes.somenteNumeroInt(opcaoStr));
 
             if (opcaoStr == null)
                 break;
@@ -48,7 +50,7 @@ public class Principal
                         nomeCompanhia = JOptionPane.showInputDialog(null, "Digite o nome da companhia : ");
                         if (nomeCompanhia == null)
                             break;
-                    }while(nomeCompanhia == null || nomeCompanhia.equals(""));
+                    }while(nomeCompanhia.equals(""));
                     if (nomeCompanhia == null)
                         break;
                     String resposta = aeroporto.cadastraCompanhia(nomeCompanhia);
@@ -62,10 +64,10 @@ public class Principal
                     {
                         companhia = String.valueOf(JOptionPane.showInputDialog(null, "Escolha a companhia : ",
                                 "Modulo Companhia", JOptionPane.PLAIN_MESSAGE, null, aeroporto.getCompanhiasAereas(), null));
-                        if (companhia == "null")
+                        if (companhia.equals("null"))
                             break;
-                    }while(companhia == null || companhia.equals("") || companhia.equals("null"));
-                    if (companhia == "null")
+                    }while(companhia.equals(""));
+                    if (companhia.equals("null"))
                         break;
                     CompanhiaAerea companhiaEscolhida = aeroporto.getCompanhia(companhia);
 
@@ -86,7 +88,7 @@ public class Principal
 
                             if (opcaoModuloCompanhiaStr == null)
                                 break;
-                        }while(opcaoModuloCompanhiaStr == null || opcaoModuloCompanhiaStr.equals("") || !Verificacoes.somenteNumeroInt(opcaoModuloCompanhiaStr));
+                        }while(opcaoModuloCompanhiaStr.equals("") || !Verificacoes.somenteNumeroInt(opcaoModuloCompanhiaStr));
 
                         if (opcaoModuloCompanhiaStr == null)
                             break;
@@ -105,7 +107,7 @@ public class Principal
 
                                     if (prefixo == null)
                                         break;
-                                }while(prefixo == null || prefixo.equals(""));
+                                }while(prefixo.equals(""));
 
                                 if (prefixo == null)
                                     break;
@@ -118,7 +120,7 @@ public class Principal
 
                                     if (autonomiaStr == null)
                                         break;
-                                }while(autonomiaStr == null || autonomiaStr.equals("") || !Verificacoes.somenteNumeroFloat(autonomiaStr));
+                                }while(autonomiaStr.equals("") || !Verificacoes.somenteNumeroFloat(autonomiaStr));
 
                                 if (autonomiaStr == null)
                                     break;
@@ -132,7 +134,7 @@ public class Principal
 
                                     if (alturaStr == null)
                                         break;
-                                }while(alturaStr == null || alturaStr.equals("") || !Verificacoes.somenteNumeroFloat(alturaStr));
+                                }while(alturaStr.equals("") || !Verificacoes.somenteNumeroFloat(alturaStr));
 
                                 if (alturaStr == null)
                                     break;
@@ -146,7 +148,7 @@ public class Principal
 
                                     if (envergaduraStr == null)
                                         break;
-                                }while(envergaduraStr == null || envergaduraStr.equals("") || !Verificacoes.somenteNumeroFloat(envergaduraStr));
+                                }while(envergaduraStr.equals("") || !Verificacoes.somenteNumeroFloat(envergaduraStr));
 
                                 if (envergaduraStr == null)
                                     break;
@@ -160,7 +162,7 @@ public class Principal
 
                                     if (comprimentoStr == null)
                                         break;
-                                }while(comprimentoStr == null || comprimentoStr.equals("") || !Verificacoes.somenteNumeroFloat(comprimentoStr));
+                                }while(comprimentoStr.equals("") || !Verificacoes.somenteNumeroFloat(comprimentoStr));
 
                                 if (comprimentoStr == null)
                                     break;
@@ -174,7 +176,7 @@ public class Principal
 
                                     if (capacidadeStr == null)
                                         break;
-                                }while(capacidadeStr == null || capacidadeStr.equals("") || !Verificacoes.somenteNumeroFloat(capacidadeStr));
+                                }while(capacidadeStr.equals("") || !Verificacoes.somenteNumeroFloat(capacidadeStr));
 
                                 if (capacidadeStr == null)
                                     break;
@@ -188,7 +190,7 @@ public class Principal
 
                                     if (quantAssentosStr == null)
                                         break;
-                                }while(quantAssentosStr == null || capacidadeStr.equals("") || !Verificacoes.somenteNumeroInt(quantAssentosStr));
+                                }while(quantAssentosStr.equals("") || !Verificacoes.somenteNumeroInt(quantAssentosStr));
 
                                 if (quantAssentosStr == null)
                                     break;
@@ -214,7 +216,7 @@ public class Principal
 
                                     if (numeroVooStr == null)
                                         break;
-                                }while(numeroVooStr == null || numeroVooStr.equals("") || !Verificacoes.somenteNumeroInt(numeroVooStr));
+                                }while(numeroVooStr.equals("") || !Verificacoes.somenteNumeroInt(numeroVooStr));
 
                                 if (numeroVooStr == null)
                                     break;
@@ -243,7 +245,7 @@ public class Principal
 
                                     if (diaVoo == null)
                                         break;
-                                }while(diaVoo == null || diaVoo.equals("") || !Verificacoes.diaValido(diaVoo));
+                                }while(diaVoo.equals("") || !Verificacoes.diaValido(diaVoo));
 
                                 if (diaVoo == null)
                                     break;
@@ -256,7 +258,7 @@ public class Principal
 
                                     if (horaVoo == null)
                                         break;
-                                }while(horaVoo == null || horaVoo.equals("") || !Verificacoes.horaValida(horaVoo));
+                                }while(horaVoo.equals("") || !Verificacoes.horaValida(horaVoo));
 
                                 if (horaVoo == null)
                                     break;
@@ -268,7 +270,7 @@ public class Principal
 
                                     if (origemVoo == null)
                                         break;
-                                }while(origemVoo == null || origemVoo.equals(""));
+                                }while(origemVoo.equals(""));
 
                                 if (origemVoo == null)
                                     break;
@@ -281,7 +283,7 @@ public class Principal
 
                                     if (destinoVoo == null)
                                         break;
-                                }while(destinoVoo == null || destinoVoo.equals(""));
+                                }while(destinoVoo.equals(""));
 
                                 if (destinoVoo == null)
                                     break;
@@ -410,7 +412,7 @@ public class Principal
 
                                         if (opcaoAlteracaoStr == null)
                                             break;
-                                    }while(opcaoAlteracaoStr == null || opcaoAlteracaoStr.equals("") || !Verificacoes.somenteNumeroInt(opcaoAlteracaoStr));
+                                    }while(opcaoAlteracaoStr.equals("") || !Verificacoes.somenteNumeroInt(opcaoAlteracaoStr));
 
                                     if (opcaoAlteracaoStr == null)
                                         break;
@@ -427,7 +429,7 @@ public class Principal
 
                                                 if (prefixoAlterar == null)
                                                     break;
-                                            }while(prefixoAlterar == null || prefixoAlterar.equals(""));
+                                            }while(prefixoAlterar.equals(""));
 
                                             if (prefixoAlterar == null)
                                                 break;
@@ -440,7 +442,7 @@ public class Principal
 
                                                 if (autonomiaAlterarStr == null)
                                                     break;
-                                            }while(autonomiaAlterarStr == null || autonomiaAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(autonomiaAlterarStr));
+                                            }while(autonomiaAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(autonomiaAlterarStr));
 
                                             if (autonomiaAlterarStr == null)
                                                 break;
@@ -454,7 +456,7 @@ public class Principal
 
                                                 if (alturaAlterarStr == null)
                                                     break;
-                                            }while(alturaAlterarStr == null || alturaAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(alturaAlterarStr));
+                                            }while(alturaAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(alturaAlterarStr));
 
                                             if (alturaAlterarStr == null)
                                                 break;
@@ -468,7 +470,7 @@ public class Principal
 
                                                 if (envergaduraAlterarStr == null)
                                                     break;
-                                            }while(envergaduraAlterarStr == null || envergaduraAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(envergaduraAlterarStr));
+                                            }while(envergaduraAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(envergaduraAlterarStr));
 
                                             if (envergaduraAlterarStr == null)
                                                 break;
@@ -482,7 +484,7 @@ public class Principal
 
                                                 if (comprimentoAlterarStr == null)
                                                     break;
-                                            }while(comprimentoAlterarStr == null || comprimentoAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(comprimentoAlterarStr));
+                                            }while(comprimentoAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(comprimentoAlterarStr));
 
                                             if (comprimentoAlterarStr == null)
                                                 break;
@@ -496,7 +498,7 @@ public class Principal
 
                                                 if (capacidadeAlterarStr == null)
                                                     break;
-                                            }while(capacidadeAlterarStr == null || capacidadeAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(capacidadeAlterarStr));
+                                            }while(capacidadeAlterarStr.equals("") || !Verificacoes.somenteNumeroFloat(capacidadeAlterarStr));
 
                                             if (capacidadeAlterarStr == null)
                                                 break;
@@ -510,7 +512,7 @@ public class Principal
 
                                                 if (quantAssentosAlterarStr == null)
                                                     break;
-                                            }while(quantAssentosAlterarStr == null || quantAssentosAlterarStr.equals("") || !Verificacoes.somenteNumeroInt(quantAssentosAlterarStr));
+                                            }while(quantAssentosAlterarStr.equals("") || !Verificacoes.somenteNumeroInt(quantAssentosAlterarStr));
 
                                             if (quantAssentosAlterarStr == null)
                                                 break;
@@ -532,7 +534,7 @@ public class Principal
 
                                                 if (numeroVooAlteracaoStr == null)
                                                     break;
-                                            }while(numeroVooAlteracaoStr == null || numeroVooAlteracaoStr.equals("") || !Verificacoes.somenteNumeroInt(numeroVooAlteracaoStr));
+                                            }while(numeroVooAlteracaoStr.equals("") || !Verificacoes.somenteNumeroInt(numeroVooAlteracaoStr));
 
                                             if (numeroVooAlteracaoStr == null)
                                                 break;
@@ -561,7 +563,7 @@ public class Principal
 
                                                 if (diaVooAlteracao == null)
                                                     break;
-                                            }while(diaVooAlteracao == null || diaVooAlteracao.equals("") || !Verificacoes.diaValido(diaVooAlteracao));
+                                            }while(diaVooAlteracao.equals("") || !Verificacoes.diaValido(diaVooAlteracao));
 
                                             if (diaVooAlteracao == null)
                                                 break;
@@ -574,7 +576,7 @@ public class Principal
 
                                                 if (horaVooAlteracao == null)
                                                     break;
-                                            }while(horaVooAlteracao == null || horaVooAlteracao.equals("") || !Verificacoes.horaValida(horaVooAlteracao));
+                                            }while(horaVooAlteracao.equals("") || !Verificacoes.horaValida(horaVooAlteracao));
 
                                             if (horaVooAlteracao == null)
                                                 break;
@@ -587,7 +589,7 @@ public class Principal
 
                                                 if (origemVooAlteracao == null)
                                                     break;
-                                            }while(origemVooAlteracao == null || origemVooAlteracao.equals(""));
+                                            }while(origemVooAlteracao.equals(""));
 
                                             if (origemVooAlteracao == null)
                                                 break;
@@ -600,7 +602,7 @@ public class Principal
 
                                                 if (destinoVooAlteracao == null)
                                                     break;
-                                            }while(destinoVooAlteracao == null || destinoVooAlteracao.equals(""));
+                                            }while(destinoVooAlteracao.equals(""));
 
                                             if (destinoVooAlteracao == null)
                                                 break;
@@ -621,7 +623,7 @@ public class Principal
 
                                                 if (prefixoExcluir == null)
                                                     break;
-                                            }while(prefixoExcluir == null || prefixoExcluir.equals(""));
+                                            }while(prefixoExcluir.equals(""));
 
                                             if (prefixoExcluir == null)
                                                 break;
@@ -641,7 +643,7 @@ public class Principal
 
                                                 if (numeroVooExcluirStr == null)
                                                     break;
-                                            }while(numeroVooExcluirStr == null || numeroVooExcluirStr.equals(""));
+                                            }while(numeroVooExcluirStr.equals(""));
 
                                             if (numeroVooExcluirStr == null)
                                                 break;
@@ -682,7 +684,7 @@ public class Principal
                         dia = JOptionPane.showInputDialog(null, "Digite o dia: ");
                         if (dia == null)
                             break;
-                    }while(dia == null || dia.equals("") || !Verificacoes.diaValido(dia));
+                    }while(dia.equals("") || !Verificacoes.diaValido(dia));
 
                     if (dia == null)
                         break;
@@ -698,7 +700,7 @@ public class Principal
                         cpf = JOptionPane.showInputDialog(null, "Digite o seu CPF:", "Consulta do Passageiro", JOptionPane.PLAIN_MESSAGE);
                         if (cpf == null)
                             break;
-                    }while(cpf == null || cpf.equals("") || !Verificacoes.cpfValido(cpf));
+                    }while(cpf.equals("") || !Verificacoes.cpfValido(cpf));
 
                     if (cpf == null)
                         break;
@@ -714,8 +716,69 @@ public class Principal
                     break;
 
                 case 6://modulos gerenciais
-                    break;
+                    int opcaoModuloGerencial;
+                    do
+                    {
 
+                        String opcaoModuloGerencialStr;
+                        do
+                        {
+                            opcaoModuloGerencialStr = JOptionPane.showInputDialog(null,
+                                    "1. Consultar Lucro da Companhia\n"+
+                                            "2. Listagem dos Passageiros\n"+
+                                            "3. Quantidade de voos por companhia\n"+
+                                            "7. Sair");
+                            if(opcaoModuloGerencialStr == null)
+                                break;
+                        }while(opcaoModuloGerencialStr.equals(""));
+
+                        if(opcaoModuloGerencialStr == null)
+                            break;
+
+                        opcaoModuloGerencial = Integer.parseInt(opcaoModuloGerencialStr);
+
+                        switch(opcaoModuloGerencial)
+                        {
+                            case 1://pegar o lucro da companhia
+                                Object companhiaObject;
+                                companhiaObject = JOptionPane.showInputDialog(null, "Escolha a Companhia",
+                                            "Modulo Gerencial", JOptionPane.PLAIN_MESSAGE, null, aeroporto.getCompanhiasAereas(), null);
+                                if(companhiaObject == null)
+                                    break;
+                                CompanhiaAerea companhiaGerencial  = ((CompanhiaAerea) companhiaObject);
+
+                                JOptionPane.showConfirmDialog(null, "O lucro da Companhia" +
+                                companhiaGerencial.getNome()+ " eh "+ companhiaGerencial.getLucro(), "Modulo Gerencial", JOptionPane.DEFAULT_OPTION);
+                                break;
+
+                            case 2://listagem de passageiros
+                                Object vooGerencialObject;
+                                vooGerencialObject = JOptionPane.showInputDialog(null, "Selecione o Voo", "Modulo Gerencial",
+                                            JOptionPane.PLAIN_MESSAGE, null, aeroporto.getVoos(), null);
+                                if(vooGerencialObject == null)
+                                    break;
+
+                                Voo vooSelecionado = ((Voo) vooGerencialObject);
+
+                                JOptionPane.showConfirmDialog(null, "Os passageiros deste voos sao:\n"+
+                                        Arrays.toString(aeroporto.listaPassageiroVoo(vooSelecionado.getNumeroVoo())), "Modulo Gerencial", JOptionPane.DEFAULT_OPTION);
+                                break;
+
+                            case 3://quantidade de voos
+                                Object companhiaQuantidadeObject;
+                                companhiaQuantidadeObject = JOptionPane.showInputDialog(null, "Escolha a Companhia",
+                                            "Modulo Gerencial", JOptionPane.PLAIN_MESSAGE, null, aeroporto.getCompanhiasAereas(), null);
+                                if(companhiaQuantidadeObject == null)
+                                    break;
+                                CompanhiaAerea companhiaQuantidadeGerencial  = ((CompanhiaAerea) companhiaQuantidadeObject);
+
+                                JOptionPane.showConfirmDialog(null, "A quantidade de voos da Companhia" +
+                                        companhiaQuantidadeGerencial.getNome()+ " eh "+ aeroporto.quantidadeVoosCompanhia(companhiaQuantidadeGerencial), "Modulo Gerencial", JOptionPane.DEFAULT_OPTION);
+                                break;
+                        }
+
+                    }while(opcaoModuloGerencial != 7);
+                    break;
             }
 
         }while(opcao != 7);

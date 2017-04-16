@@ -23,6 +23,14 @@ public class ModuloCompanhia
         if(companhia == null)
             return false;
 
+        for(Aviao aviao : companhia.getAvioes())
+        {
+            if(aviao != null)
+            {
+                if(aviao.getPrefixo().equals(prefixo))
+                    return false;
+            }
+        }
 
         Aviao inserirAviao = new Aviao(prefixo, autonomia, altura, envergadura, comprimento, capacidade, quantidadeAssentos);
         companhia.insereAviao(inserirAviao);
@@ -32,6 +40,16 @@ public class ModuloCompanhia
     public boolean cadastraVoo(int numeroVoo, CompanhiaAerea companhia, Aviao aviao, String dia, String hora,
                                String destino, String origem)
     {
+
+        for(Voo voo : this.voos)
+        {
+            if(voo != null)
+            {
+                if(voo.getNumeroVoo() == numeroVoo)
+                    return false;
+            }
+        }
+
         Voo novoVoo = new Voo(numeroVoo, companhia, aviao, dia, hora, destino, origem);
 
         int i;
@@ -48,12 +66,11 @@ public class ModuloCompanhia
     public boolean cadastraPassageiro(Voo voo, String nome, String telefone, String email, String cpf, String nascimento)
     {
         Passageiro novoPassageiro = new Passageiro(nome, telefone, email, cpf, nascimento);
-        //if(!novoPassageiro.getCpf().eValido() || !novoPassageiro.getEmail().eValido())
-        //    return false;
+        if(!novoPassageiro.getCpf().eValido() || !novoPassageiro.getEmail().eValido())
+            return false;
 
         if(voo.getAviao().getQuantidadeAssentos() <= voo.getQuantidadePassageiros())
             return false;
-
         return voo.inserePassageiro(novoPassageiro);
     }
 

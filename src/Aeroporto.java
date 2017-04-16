@@ -68,6 +68,15 @@ public class Aeroporto
         if(this.quantidadeCompanhias >= 100)
             return "ERRO - Quantidade de Companhias Esgotadas.";
 
+        for(CompanhiaAerea companhia : this.companhiasAereas)
+        {
+            if(companhia != null)
+            {
+                if(companhia.getNome().equals(nomeCompanhia))
+                    return "ERRO - Companhia Aerea Já Cadastrada";
+            }
+        }
+
         CompanhiaAerea novaCompanhia = new CompanhiaAerea(nomeCompanhia, 0, 0);
         this.companhiasAereas[this.quantidadeCompanhias] = novaCompanhia;
         this.quantidadeCompanhias++;
@@ -134,7 +143,25 @@ public class Aeroporto
             {
                 if(voo.getNumeroVoo() == numeroVoo)
                 {
-                    return voo.getPassageiros();
+                    //conta quantos elementos tem
+                    int quantidade = 0;
+                    for(Passageiro passageiro : voo.getPassageiros())
+                    {
+                        if(passageiro != null)
+                            quantidade++;
+                    }
+                    //cria um vetor com a quantidade
+                    Passageiro[] passageiros = new Passageiro[quantidade];
+                    int cont = 0;
+                    for(Passageiro passageiro : voo.getPassageiros())
+                    {
+                        if(passageiro != null)
+                        {
+                            passageiros[cont] = passageiro;
+                            cont++;
+                        }
+                    }
+                    return passageiros;
                 }
             }
         }

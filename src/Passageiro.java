@@ -77,4 +77,10 @@ public class Passageiro
     {
         return this.nascimento;
     }
+
+    @Override
+    public String toString()
+    {
+       return "Nome: "+this.nome+" CPF: "+this.cpf.getCpf()+"\n";
+    }
 }

@@ -29,7 +29,7 @@ public class ModuloCelular
         for(int i = 0; i < this.voos.length && this.voos[i] != null; i++)
         {
             Passageiro[] passageirosVoo = this.voos[i].getPassageiros();
-            for(int j = 0; j != passageirosVoo.length && passageirosVoo[i] != null; j++)
+            for(int j = 0; j != passageirosVoo.length && passageirosVoo[j] != null; j++)
             {
                 if(passageirosVoo[j].getCpf().getCpf().equals(cpfPassageiro))
                 {
@@ -50,7 +50,7 @@ public class ModuloCelular
             for(int i = 0; i < this.voos.length && this.voos[i] != null; i++)
             {
                 Passageiro[] passageiros = this.voos[i].getPassageiros();
-                for(int j = 0; j != passageiros.length && passageiros[i] != null; j++)
+                for(int j = 0; j != passageiros.length && passageiros[j] != null; j++)
                 {
                     if(passageiros[j].getCpf().equals(cpfPassageiro))
                     {
