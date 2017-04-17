@@ -775,6 +775,33 @@ public class Principal
                                 JOptionPane.showConfirmDialog(null, "A quantidade de voos da Companhia" +
                                         companhiaQuantidadeGerencial.getNome()+ " eh "+ aeroporto.quantidadeVoosCompanhia(companhiaQuantidadeGerencial), "Modulo Gerencial", JOptionPane.DEFAULT_OPTION);
                                 break;
+
+                            case 4://verifica choque
+                                String diaGerencial;
+                                String hora;
+                                do
+                                {
+                                    diaGerencial = JOptionPane.showInputDialog(null, "Digite o dia do voo", "Modulo Gerencial");
+                                    if(diaGerencial == null)
+                                        break;
+
+                                }while(diaGerencial.equals(""));
+
+                                if(diaGerencial == null)
+                                    break;
+
+                                do
+                                {
+                                    hora = JOptionPane.showInputDialog(null, "Digite o hora do voo", "Modulo Gerencial");
+                                    if(hora == null)
+                                        break;
+
+                                }while(hora.equals(""));
+
+                                if(hora == null)
+                                    break;
+
+                                JOptionPane.showConfirmDialog(null, "Os voos que chocam sao : \n" + Arrays.toString(aeroporto.choqueVoo(diaGerencial, hora)));
                         }
 
                     }while(opcaoModuloGerencial != 7);

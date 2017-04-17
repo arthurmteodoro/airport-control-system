@@ -168,4 +168,44 @@ public class Aeroporto
         return null;
     }
 
+    public Voo[] choqueVoo(String dia, String hora)
+    {
+        if(!verificaQuatroVoos(dia, hora))
+        {
+            Voo[] choque = new Voo[3];
+            int cont = 0;
+
+            for(Voo voo:this.voos)
+            {
+                if(voo.getDia().equals(dia) && voo.getHora().equals(hora))
+                {
+                    choque[cont] = voo;
+                    cont++;
+                }
+            }
+
+            return choque;
+        }
+        return null;
+    }
+    private boolean verificaQuatroVoos(String dia, String hora)
+    {
+
+        int cont = 0;
+        for(Voo voo:this.voos)
+        {
+            if(voo != null)
+            {
+                if(voo.getDia().equals(dia) && voo.getHora().equals(hora))
+                {
+                    cont++;
+                }
+            }
+            if(cont == 3)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }

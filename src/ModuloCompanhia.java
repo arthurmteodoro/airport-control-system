@@ -41,6 +41,11 @@ public class ModuloCompanhia
                                String destino, String origem)
     {
 
+        if(!verificaQuatroVoos(dia, hora))
+        {
+            return false;
+        }
+
         for(Voo voo : this.voos)
         {
             if(voo != null)
@@ -198,4 +203,24 @@ public class ModuloCompanhia
         return true;
     }
 
+    private boolean verificaQuatroVoos(String dia, String hora)
+    {
+
+        int cont = 0;
+        for(Voo voo:this.voos)
+        {
+            if(voo != null)
+            {
+                if(voo.getDia().equals(dia) && voo.getHora().equals(hora))
+                {
+                    cont++;
+                }
+            }
+            if(cont == 3)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }
