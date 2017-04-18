@@ -316,42 +316,77 @@ public class Principal
                                 {
                                     nomePassageiro = JOptionPane.showInputDialog(null, "Digite o nome do Passageiro",
                                             "Cadastro de Passageiro - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
-                                }while(nomePassageiro == null || nomePassageiro.equals(""));
+                                    if(nomePassageiro == null)
+                                        break;
+                                }while(nomePassageiro.equals(""));
+
+                                if(nomePassageiro == null)
+                                    break;
 
                                 String telefonePassageiro;
                                 do
                                 {
                                     telefonePassageiro = JOptionPane.showInputDialog(null, "Digite o telefone do Passageiro",
                                             "Cadastro de Passageiro - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
-                                }while(telefonePassageiro == null || telefonePassageiro.equals("") || !Verificacoes.telefoneValido(telefonePassageiro));
+                                    if(telefonePassageiro == null)
+                                        break;
+                                }while(telefonePassageiro.equals("") || !Verificacoes.telefoneValido(telefonePassageiro));
+
+                                if(telefonePassageiro == null)
+                                    break;
 
                                 String emailPassageiro;
                                 do
                                 {
                                     emailPassageiro = JOptionPane.showInputDialog(null, "Digite o email do Passageiro",
                                             "Cadastro de Passageiro - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
-                                }while(emailPassageiro == null || emailPassageiro.equals("") || !Verificacoes.emailValido(emailPassageiro));
+                                    if(emailPassageiro == null)
+                                        break;
+                                }while(emailPassageiro.equals("") || !Verificacoes.emailValido(emailPassageiro));
+
+                                if(emailPassageiro == null)
+                                    break;
 
                                 String cpfPassageiro;
                                 do
                                 {
                                     cpfPassageiro = JOptionPane.showInputDialog(null, "Digite o CPF do Passageiro",
                                             "Cadastro de Passageiro - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
-                                }while(cpfPassageiro == null || cpfPassageiro.equals("") || !Verificacoes.cpfValido(cpfPassageiro));
+                                    if(cpfPassageiro == null)
+                                        break;
+                                }while(cpfPassageiro.equals("") || !Verificacoes.cpfValido(cpfPassageiro));
+
+                                if(cpfPassageiro == null)
+                                    break;
 
                                 String nascimentoPassageiro;
                                 do
                                 {
                                     nascimentoPassageiro = JOptionPane.showInputDialog(null, "Digite a data de nascimento do Passageiro",
                                             "Cadastro de Passageiro - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
-                                }while(nascimentoPassageiro == null || nascimentoPassageiro.equals("") || !Verificacoes.diaValido(nascimentoPassageiro));
+
+                                    if(nascimentoPassageiro == null)
+                                        break;
+
+                                }while(nascimentoPassageiro.equals("") || !Verificacoes.diaValido(nascimentoPassageiro));
+
+                                if(nascimentoPassageiro == null)
+                                    break;
 
                                 String pesoPassageiroStr;
                                 do
                                 {
                                     pesoPassageiroStr = JOptionPane.showInputDialog(null, "Digite o peso da bagagem",
                                             "Cadastro de Passageiro - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
-                                }while(pesoPassageiroStr == null || pesoPassageiroStr.equals("") || !Verificacoes.somenteNumeroFloat(pesoPassageiroStr));
+
+                                    if(pesoPassageiroStr == null)
+                                        break;
+
+                                }while(pesoPassageiroStr.equals("") || !Verificacoes.somenteNumeroFloat(pesoPassageiroStr));
+
+                                if(pesoPassageiroStr == null)
+                                    break;
+
                                 float pesoPassageiro = Float.parseFloat(pesoPassageiroStr);
 
                                 if(moduloCompanhia.cadastraPassageiro(vooPassageiro, nomePassageiro, telefonePassageiro, emailPassageiro,
