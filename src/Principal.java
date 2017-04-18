@@ -307,9 +307,14 @@ public class Principal
                                         "Cadastro de Passageiro - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE,
                                         null, moduloCompanhia.getVoosCompanhia(companhiaEscolhida), null);
 
+                                    if(vooObjectPassageiro == null)
+                                        break;
+
                                 }while(vooObjectPassageiro == null);
                                 Voo vooPassageiro = ((Voo) vooObjectPassageiro);
 
+                                if(vooObjectPassageiro == null)
+                                    break;
 
                                 String nomePassageiro;
                                 do

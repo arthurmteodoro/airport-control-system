@@ -22,11 +22,10 @@ public class ModuloPainel
     public String mostraVoos(String dia)
     {
         String painel = "";
-        for(int i = 0; this.voos[i] != null; i++)
+        for(Voo voo:this.voos)
         {
-            if(this.voos[i].getDia().equals(dia))
+            if(voo != null && voo.getDia().equals(dia))
             {
-                Voo voo = this.voos[i];
                 painel = painel + "Numero Voo: " + voo.getNumeroVoo() + "    Companhia: " + voo.getCompanhia().getNome() + "    Hora: " + voo.getHora()
                         + "    Destino: " + voo.getDestino() + "    Origem: " + voo.getOrigem() + "    Status : " + voo.getStatus() + "\n";
             }
