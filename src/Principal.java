@@ -1,5 +1,4 @@
 import br.ifmg.util.Verificacoes;
-import jdk.nashorn.internal.scripts.JO;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -7,7 +6,7 @@ import java.util.Arrays;
 
 /**
  * Created by arthur and saulo on 28/03/17.
- * Classe principal do sistema
+ * Classe principal do sistemaes
  */
 public class Principal
 {

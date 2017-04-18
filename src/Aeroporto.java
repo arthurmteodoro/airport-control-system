@@ -106,32 +106,7 @@ public class Aeroporto
                 linha = bufferedReader.readLine();
             }
             Gson gson = new Gson();
-            Voo[] novosVoo = gson.fromJson(json, Voo[].class);
-
-            for(Voo voo : novosVoo)
-            {
-                if(voo != null)
-                {
-                    boolean igual = false;
-                    for(Voo vooIgual : this.voos)
-                    {
-                        if(vooIgual != null)
-                        {
-                            if(voo.getNumeroVoo() == vooIgual.getNumeroVoo())
-                            {
-                                igual = true;
-                                break;
-                            }
-                        }
-                    }
-                    if(!igual)
-                    {
-                        cadastraVoo(voo.getNumeroVoo(), voo.getCompanhia(), voo.getAviao(), voo.getDia(), voo.getHora(),
-                                voo.getDestino(), voo.getOrigem());
-                        voo.getCompanhia().setLucro(voo.getCompanhia().getLucro()+10000);
-                    }
-                }
-            }
+            this.voos = gson.fromJson(json, Voo[].class);
 
             bufferedReader.close();
             return true;

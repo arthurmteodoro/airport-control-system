@@ -52,7 +52,7 @@ public class ModuloCelular
                 Passageiro[] passageiros = this.voos[i].getPassageiros();
                 for(int j = 0; j != passageiros.length && passageiros[j] != null; j++)
                 {
-                    if(passageiros[j].getCpf().equals(cpfPassageiro))
+                    if(passageiros[j].getCpf().getCpf().equals(cpfPassageiro))
                     {
                         voosPassageiroEsta[indexVetor] = this.voos[i];
                         indexVetor++;
