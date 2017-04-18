@@ -2,49 +2,17 @@
 <Diagram>
   <ID>JAVA</ID>
   <OriginalElement />
-  <nodes>
-    <node x="-720.5357142857151" y="622.1428571428575">Email</node>
-    <node x="241.285714285714" y="-244.2857142857145">Aviao</node>
-    <node x="-403.5714285714292" y="422.8571428571428">Passageiro</node>
-    <node x="-632.5000000000006" y="-405.00000000000034">Voo</node>
-    <node x="-725.5357142857151" y="413.92857142857144">CPF</node>
-    <node x="114.42857142857133" y="424.99999999999966">CompanhiaAerea</node>
-  </nodes>
+  <nodes />
   <notes />
-  <edges>
-    <edge source="Passageiro" target="CPF">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="CompanhiaAerea" target="Aviao">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="Voo" target="CompanhiaAerea">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="Passageiro" target="Email">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="Voo" target="Passageiro">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-    <edge source="Voo" target="Aviao">
-      <point x="0.0" y="0.0" />
-      <point x="0.0" y="0.0" />
-    </edge>
-  </edges>
-  <settings layout="Hierarchic Group" zoom="0.6999999999999996" x="-118.85714285714243" y="493.71428571428595" />
-  <SelectedNodes>
-    <node>Aviao</node>
-  </SelectedNodes>
+  <edges />
+  <settings layout="Hierarchic Group" zoom="1.0" x="52.5" y="15.5" />
+  <SelectedNodes />
   <Categories>
     <Category>Fields</Category>
     <Category>Constructors</Category>
     <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>

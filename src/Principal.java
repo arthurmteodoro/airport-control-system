@@ -84,6 +84,7 @@ public class Principal
                                 "3. Cadastrar Passageiro\n" +
                                 "4. Gera Json\n" +
                                 "5. Alterações\n" +
+                                "6. Alterar Status do Voo\n"+
                                 "7. Sair", "Menu de Opcoes - Companhia "+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
 
                             if (opcaoModuloCompanhiaStr == null)
@@ -607,8 +608,20 @@ public class Principal
                                             if (destinoVooAlteracao == null)
                                                 break;
 
+                                            String statusVooAlteracao;
+                                            do
+                                            {
+                                                statusVooAlteracao = JOptionPane.showInputDialog(null, "Entre com o status do voo",
+                                                        "Cadastro de Voos - Companhia"+companhiaEscolhida, JOptionPane.PLAIN_MESSAGE);
+                                                if(statusVooAlteracao == null)
+                                                    break;
+                                            }while(statusVooAlteracao.equals(""));
+
+                                            if(statusVooAlteracao == null)
+                                                break;
+
                                             if(moduloCompanhia.alterarVoo(numeroVooAlteracao, companhiaEscolhida, aviaoVooAlteracao, diaVooAlteracao,
-                                                    horaVooAlteracao, origemVooAlteracao, destinoVooAlteracao))
+                                                    horaVooAlteracao, origemVooAlteracao, destinoVooAlteracao, statusVooAlteracao))
                                                 JOptionPane.showConfirmDialog(null, "Atualização do aviao realizada com sucesso");
                                             else
                                                 JOptionPane.showConfirmDialog(null, "Falha na atualização de avião");
@@ -653,9 +666,35 @@ public class Principal
                                                 JOptionPane.showConfirmDialog(null, "Exclusão do voo realizada com sucesso");
                                             else
                                                 JOptionPane.showConfirmDialog(null, "Exclusão do voo nao realizada");
+                                            break;
 
                                     }
                                 }while(opcaoAlteracao != 7);
+                                break;
+
+                            case 6://altera o status do voo
+
+                                Object vooAlterarSatusObject;
+                                vooAlterarSatusObject = JOptionPane.showInputDialog(null, "Selecione o voo", "Alterar Status",
+                                            JOptionPane.PLAIN_MESSAGE, null, moduloCompanhia.getVoosCompanhia(companhiaEscolhida), null);
+
+                                if(vooAlterarSatusObject == null)
+                                    break;
+
+                                String novoStatus;
+                                do
+                                {
+                                    novoStatus = JOptionPane.showInputDialog(null, "Digite o novo status");
+                                    if(novoStatus == null)
+                                        break;
+                                }while(novoStatus.equals(""));
+
+                                if(novoStatus == null)
+                                    break;
+
+                                Voo vooAlterarStatus = ((Voo) vooAlterarSatusObject);
+                                moduloCompanhia.alteraStatusVoo(vooAlterarStatus.getNumeroVoo(), novoStatus);
+                                break;
                         }
                     }while(opcaoModuloCompanhia != 7);
                     break;//break do case 2 - menu geral.

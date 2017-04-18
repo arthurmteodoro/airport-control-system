@@ -106,7 +106,33 @@ public class Aeroporto
                 linha = bufferedReader.readLine();
             }
             Gson gson = new Gson();
-            this.voos = gson.fromJson(json, Voo[].class);
+            Voo[] novosVoo = gson.fromJson(json, Voo[].class);
+
+            for(Voo voo : novosVoo)
+            {
+                if(voo != null)
+                {
+                    boolean igual = false;
+                    for(Voo vooIgual : this.voos)
+                    {
+                        if(vooIgual != null)
+                        {
+                            if(voo.getNumeroVoo() == vooIgual.getNumeroVoo())
+                            {
+                                igual = true;
+                                break;
+                            }
+                        }
+                    }
+                    if(!igual)
+                    {
+                        cadastraVoo(voo.getNumeroVoo(), voo.getCompanhia(), voo.getAviao(), voo.getDia(), voo.getHora(),
+                                voo.getDestino(), voo.getOrigem());
+                        voo.getCompanhia().setLucro(voo.getCompanhia().getLucro()+10000);
+                    }
+                }
+            }
+
             bufferedReader.close();
             return true;
 
@@ -206,6 +232,37 @@ public class Aeroporto
                 return false;
             }
         }
+        return true;
+    }
+
+    private boolean cadastraVoo(int numeroVoo, CompanhiaAerea companhia, Aviao aviao, String dia, String hora,
+                               String destino, String origem)
+    {
+
+        if(!verificaQuatroVoos(dia, hora))
+        {
+            return false;
+        }
+
+        for(Voo voo : this.voos)
+        {
+            if(voo != null)
+            {
+                if(voo.getNumeroVoo() == numeroVoo)
+                    return false;
+            }
+        }
+
+        Voo novoVoo = new Voo(numeroVoo, companhia, aviao, dia, hora, destino, origem);
+
+        int i;
+        for(i = 0; this.voos[i] != null; i++);
+
+        //o aeroporto ja chegou ao limite
+        if(i >= 100)
+            return false;
+
+        voos[i] = novoVoo;
         return true;
     }
 }

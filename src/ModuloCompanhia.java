@@ -37,6 +37,7 @@ public class ModuloCompanhia
         return true;
     }
 
+    //funcao duplicada pq esta implementada em outra classe
     public boolean cadastraVoo(int numeroVoo, CompanhiaAerea companhia, Aviao aviao, String dia, String hora,
                                String destino, String origem)
     {
@@ -127,7 +128,7 @@ public class ModuloCompanhia
 
 
     public boolean alterarVoo(int numeroVoo, CompanhiaAerea companhia, Aviao aviao, String dia, String hora,
-                              String destino, String origem)
+                              String destino, String origem, String status)
     {
         Voo[] voos = this.voos;
         for(int i = 0; i < voos.length && voos[i] != null; i++)
@@ -141,6 +142,7 @@ public class ModuloCompanhia
                 vooEscolhido.setHora(hora);
                 vooEscolhido.setDestino(destino);
                 vooEscolhido.setOrigem(origem);
+                vooEscolhido.setStatus(status);
                 return true;
             }
         }
@@ -203,6 +205,7 @@ public class ModuloCompanhia
         return true;
     }
 
+    //funcao duplicada pq esta implementada em outra classe
     private boolean verificaQuatroVoos(String dia, String hora)
     {
 
@@ -222,5 +225,21 @@ public class ModuloCompanhia
             }
         }
         return true;
+    }
+
+    public boolean alteraStatusVoo(int numeroVoo, String novoStatus)
+    {
+        for(Voo voo : this.voos)
+        {
+            if(voo != null)
+            {
+                if(voo.getNumeroVoo() == numeroVoo)
+                {
+                    voo.setStatus(novoStatus);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
